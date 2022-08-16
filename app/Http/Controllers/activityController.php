@@ -40,6 +40,7 @@ class activityController extends Controller
             'descricao' => 'string',
             'data_atividade' => 'string'
         ]);
+        //
 
         $schedule = Activity::create([
             'evento' => $request->evento,
