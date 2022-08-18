@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\activityController;
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', [activityController::class, 'index']);
-Route::post('/cadastro', [activityController::class, 'store'])->name('cadastrar_atividade');
-
 
 Auth::routes();
 

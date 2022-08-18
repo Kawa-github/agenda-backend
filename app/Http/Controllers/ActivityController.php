@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
-class activityController extends Controller
+use function GuzzleHttp\Promise\all;
+
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class activityController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $res = Activity::all();
+        return response()->json($res);
+        // return view('index');
     }
 
     /**
@@ -24,7 +28,7 @@ class activityController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,20 +39,14 @@ class activityController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'evento' => 'string|required',
-            'descricao' => 'string',
-            'data_atividade' => 'string'
-        ]);
-        //
-
-        $schedule = Activity::create([
-            'evento' => $request->evento,
-            'descricao' => $request->descricao,
-            'data_atividade' => $request->data_atividade
-        ]);
-
-        return redirect()->to('/')->with('deu certo.');
+        $activity = new Activity;
+        $activity->name_event = $request->name_event;
+        $activity->description = $request->description;
+        $activity->date_activity = $request->date_activity;
+ 
+        $res = $activity->save();
+ 
+        return response()->json($res);
     }
 
     /**
@@ -59,7 +57,7 @@ class activityController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

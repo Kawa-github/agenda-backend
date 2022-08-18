@@ -11,9 +11,8 @@
     }
 </style>
 
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog w-100">
         <form action="{{route('cadastrar_atividade')}}" method="POST">
+            @csrf
             <div class="modal-content">
             <div class="modal-header purple">
               <h5 class="modal-title text-white">Criação de atividade esportiva</h5>
@@ -22,15 +21,15 @@
                 <div class="modal-body">
                     <div>
                         <label class="form-label">Evento</label>
-                        <input type="text" class="form-control" maxlength="45" name="evento">
+                        <input type="text" class="form-control" maxlength="45" name="name_event">
                     </div>
                     <div>
                         <label class="form-label">Descrição</label>
-                        <textarea class="form-control" maxlength="75" name="descricao"></textarea>
+                        <textarea class="form-control" maxlength="75" name="description"></textarea>
                     </div>
                     <div class="">
                         <label class="form-label">De:</label>
-                        <input type="date" name="" id="" class="form-control w-50" name="data_atividade">
+                        <input type="date" class="form-control w-50" name="date_activity">
                     </div>
                     <div class="row">
                         <div class="col-3">
@@ -58,12 +57,8 @@
                     </div>
 
                 </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn_salvar purple text-white text-decoration-none">Salvar</button>
-            </div>
+              <button type="submit" class="purple">Salvar</button>
           </div>
         </form>
-    </div>
-  </div>
 
 @endsection

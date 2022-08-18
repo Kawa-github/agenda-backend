@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts_activities', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('evento');
-            $table->string('descricao');
-            $table->string('data_atividade');
-            $table->string('inicio');
-            $table->string('termino');
+            $table->string('name_event');
+            $table->string('description');
+            $table->date('date_activity');
+            // $table->string('inicio');
+            // $table->string('termino');
             // $table->boolean('repete')->default(false);
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_activities');
+        Schema::dropIfExists('activities');
     }
 };

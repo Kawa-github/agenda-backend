@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActivityController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::controller(ActivityController::class)->group(function(){
+
+    Route::get('/home', [ActivityController::class, 'index']);
+    Route::post('/cadastro', [ActivityController::class, 'store'])->name('cadastrar_atividade');
+});
+
+
+// "localhost:8000/api/"

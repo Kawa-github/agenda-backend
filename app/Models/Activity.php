@@ -9,7 +9,6 @@ class Activity extends Model
 {
     use HasFactory;
 
-
-    protected $fillable = ['id','evento','descricao','data_atividade']; 
-
+    protected $fillable = ['name_event','description']; 
+    protected $dates = ['date_activity'];
 }
