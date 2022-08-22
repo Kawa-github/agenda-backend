@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->string('id_group')->default('activities_confirmed');
             $table->string('name_event');
             $table->string('description');
             $table->date('date_activity');
-            // $table->string('inicio');
-            // $table->string('termino');
+            $table->string('start');
+            $table->string('end');
             // $table->boolean('repete')->default(false);
             $table->timestamps();
         });

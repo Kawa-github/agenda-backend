@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use function GuzzleHttp\Promise\all;
 
@@ -18,7 +19,6 @@ class ActivityController extends Controller
     {
         $res = Activity::all();
         return response()->json($res);
-        // return view('index');
     }
 
     /**
@@ -42,8 +42,10 @@ class ActivityController extends Controller
         $activity = new Activity;
         $activity->name_event = $request->name_event;
         $activity->description = $request->description;
-        $activity->date_activity = $request->date_activity;
- 
+        $activity->date_activity = Carbon::parse($request->date_activity)->format('Y-m-d');
+        $activity->start = $request->start;
+        $activity->end = $request->end;
+        
         $res = $activity->save();
  
         return response()->json($res);
@@ -57,7 +59,8 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-
+        $activity = Activity::findOrFail($id); 
+        return response()->json($activity);
     }
 
     /**

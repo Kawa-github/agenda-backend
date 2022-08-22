@@ -24,6 +24,7 @@ Route::controller(ActivityController::class)->group(function(){
 
     Route::get('/home', [ActivityController::class, 'index']);
     Route::post('/cadastro', [ActivityController::class, 'store'])->name('cadastrar_atividade');
+    Route::get('/cadastro/{id}',[ActivityController::class, 'show']);
 });
 
 

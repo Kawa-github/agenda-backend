@@ -19,7 +19,9 @@ class ActivityFactory extends Factory
         return [
             'name_event' => $this->faker->name(),
             'description' => $this->faker->unique()->safeEmail(),
-            'date_activity' => $this->faker->dateTimeThisMonth()->format('Y-m-d')
+            'date_activity' => $this->faker->dateTimeThisMonth(),
+            'start' => $this->faker->time(),
+            'end' => $this->faker->time(),
         ];
     }
 }
